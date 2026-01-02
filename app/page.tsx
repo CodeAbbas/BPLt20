@@ -10,13 +10,19 @@ export default function Home() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      
+      {/* Hero / Live Score Section */}
       <section className="mb-12">
         <h2 className="sr-only">Live Scores</h2>
         <LiveMatch match={activeMatch} />
       </section>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        {/* Main Content Area */}
         <div className="lg:col-span-2 space-y-12">
+          
+          {/* Top Performers Section */}
           <section>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-display font-bold text-gray-900 border-l-4 border-bpl-primary pl-3">
@@ -28,20 +34,20 @@ export default function Home() {
                 title="Orange Cap (Runs)" 
                 player={topBatsman} 
                 metricLabel="Runs" 
-                metricValue={topBatsman.runs || 0} // Fix: Use runs
+                metricValue={topBatsman.runs || 0}
                 subMetric={`Strike Rate: ${topBatsman.sr}`}
               />
               <StatsHighlight 
                 title="Purple Cap (Wickets)" 
                 player={topBowler} 
                 metricLabel="Wickets" 
-                metricValue={topBowler.wickets || 0} // Fix: Use wickets, not .bowlers
+                metricValue={topBowler.wickets || 0}
                 subMetric={`Economy: ${topBowler.eco}`}
               />
             </div>
           </section>
 
-          {/* News Section */}
+          {/* Latest News */}
           <section>
             <h2 className="text-2xl font-display font-bold text-gray-900 border-l-4 border-bpl-secondary pl-3 mb-6">
               Latest Updates
@@ -62,9 +68,16 @@ export default function Home() {
           </section>
         </div>
 
+        {/* Sidebar */}
         <aside className="space-y-8">
           <PointsTable data={pointsTableData} />
+          
+          {/* Ad Placeholder or Social Widget */}
+          <div className="bg-gray-200 h-64 rounded-lg flex items-center justify-center text-gray-500">
+            Ad Space / Social Widget
+          </div>
         </aside>
+
       </div>
     </div>
   );
