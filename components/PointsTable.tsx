@@ -1,9 +1,12 @@
-export default function PointsTable({ data }) {
+import { TableRow } from '@/lib/types';
+
+export default function PointsTable({ data }: { data: TableRow[] }) {
   return (
     <div className="bg-white rounded-lg shadow overflow-hidden">
       <div className="bg-bpl-dark px-4 py-3 border-b border-gray-200">
         <h3 className="text-lg leading-6 font-medium text-white font-display">Points Table</h3>
       </div>
+      {/* Rest of your table code remains the same */}
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">

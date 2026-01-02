@@ -1,4 +1,15 @@
-export default function StatsHighlight({ title, player, metricLabel, metricValue, subMetric }) {
+import { Player } from '@/lib/types';
+
+interface StatsHighlightProps {
+  title: string;
+  player: Player;
+  metricLabel: string;
+  metricValue: number | string;
+  subMetric: string;
+}
+
+export default function StatsHighlight({ title, player, metricLabel, metricValue, subMetric }: StatsHighlightProps) {
+  // Return statement remains exactly the same as your file
   return (
     <div className="bg-gradient-to-br from-bpl-primary to-green-800 rounded-xl p-6 text-white shadow-lg relative overflow-hidden">
       {/* Decorative circle */}
