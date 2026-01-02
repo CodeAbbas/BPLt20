@@ -1,0 +1,40 @@
+// Updated: 02 Jan 2026 (BPL Season 12)
+
+export const activeMatch = {
+  id: 112, // Match 12 of the season
+  team1: "Sylhet Titans",
+  team2: "Rangpur Riders",
+  team1Score: "Yet to Bat",
+  team2Score: "Yet to Bat",
+  status: "Upcoming", // Scheduled for 7:00 PM BST (Today)
+  result: "Toss scheduled for 6:30 PM",
+  venue: "Sylhet International Cricket Stadium, Sylhet"
+};
+
+export const pointsTableData = [
+  { rank: 1, team: "Rajshahi Warriors", played: 4, won: 3, lost: 1, nrr: "+0.145", pts: 6 },
+  { rank: 2, team: "Sylhet Titans", played: 3, won: 2, lost: 1, nrr: "+0.037", pts: 4 },
+  { rank: 3, team: "Chattogram Royals", played: 3, won: 1, lost: 2, nrr: "-0.450", pts: 2 }, // Adjusted after today's early loss
+  { rank: 4, team: "Dhaka Capitals", played: 3, won: 1, lost: 2, nrr: "-0.937", pts: 2 },
+  { rank: 5, team: "Rangpur Riders", played: 2, won: 1, lost: 1, nrr: "+1.075", pts: 2 },
+  { rank: 6, team: "Noakhali Express", played: 3, won: 0, lost: 3, nrr: "-1.393", pts: 0 },
+];
+
+export const topPerformers = {
+  batsmen: [
+    { name: "Parvez Hossain Emon", team: "Sylhet Titans", runs: 169, innings: 3, sr: 159.43, image: "/players/emon.jpg" },
+    { name: "Najmul Hossain Shanto", team: "Rajshahi Warriors", runs: 162, innings: 4, sr: 150.00, image: "/players/shanto.jpg" },
+    { name: "Mohammad Naim", team: "Chattogram Royals", runs: 145, innings: 3, sr: 135.20, image: "/players/naim.jpg" }
+  ],
+  bowlers: [
+    { name: "Shoriful Islam", team: "Chattogram Royals", wickets: 6, innings: 3, eco: 7.50, image: "/players/shoriful.jpg" },
+    { name: "Salman Mirza", team: "Dhaka Capitals", wickets: 5, innings: 3, eco: 7.85, image: "/players/salman.jpg" },
+    { name: "Faheem Ashraf", team: "Rangpur Riders", wickets: 5, innings: 2, eco: 6.20, image: "/players/faheem.jpg" }
+  ]
+};
+
+export const newsUpdates = [
+  { id: 1, title: "Chattogram Royals ownership drama: BCB takes temporary charge", date: "01 Jan 2026", category: "Management" },
+  { id: 2, title: "Dhaka Capitals secure first win against Rajshahi in thriller", date: "31 Dec 2025", category: "Match Report" },
+  { id: 3, title: "Playoff format confirmed: Eliminator set for Jan 19", date: "29 Dec 2025", category: "Schedule" }
+];
