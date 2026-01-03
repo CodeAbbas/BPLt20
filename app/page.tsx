@@ -5,6 +5,7 @@ import StatsHighlight from '@/components/StatsHighlight';
 import { Player } from '@/lib/types';
 
 // Helper component for the Rank 2-5 list rows
+// This makes the list look cleaner without cluttering the main code
 const LeaderboardRow = ({ rank, player, metric }: { rank: number; player: Player; metric: string }) => (
   <div className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors px-2">
     <div className="flex items-center gap-4">
@@ -21,7 +22,6 @@ const LeaderboardRow = ({ rank, player, metric }: { rank: number; player: Player
 );
 
 export default function Home() {
-  // Get top players for the cards
   const topBatsman = topPerformers.batsmen[0];
   const topBowler = topPerformers.bowlers[0];
 
@@ -32,15 +32,16 @@ export default function Home() {
   return (
     <div className="bg-slate-50 min-h-screen">
       
-      {/* 1. HERO SECTION: Live Score with a Gradient Backdrop */}
-      <div className="bg-gradient-to-r from-bpl-dark to-bpl-primary pb-24 pt-12 text-center">
+      {/* 1. HERO SECTION: Gradient Background */}
+      <div className="bg-gradient-to-r from-bpl-dark to-bpl-primary pb-24 pt-12 text-center shadow-inner">
         <h1 className="text-3xl md:text-5xl font-display font-bold text-white mb-2 tracking-wide uppercase">
           BPL <span className="text-bpl-accent">Season 12</span>
         </h1>
         <p className="text-gray-300 mb-8 font-medium">Official Live Scores & Updates</p>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20">
+      {/* Negative margin to pull the Live Card up into the Hero section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
         <LiveMatch match={activeMatch} />
       </div>
 
@@ -48,17 +49,17 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
-          {/* LEFT COLUMN: Stats & News (Span 8 cols) */}
+          {/* LEFT COLUMN (Span 8) */}
           <div className="lg:col-span-8 space-y-12">
             
-            {/* 2. STATS SECTION: Split Layout */}
+            {/* 2. STATS SECTION */}
             <section>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-display font-bold text-bpl-dark border-l-4 border-bpl-secondary pl-3">
-                  Tournament Stats
+                  Tournament Leaders
                 </h2>
-                <a href="/stats" className="text-sm font-medium text-bpl-primary hover:text-bpl-secondary">
-                  View All Stats &rarr;
+                <a href="/stats" className="text-sm font-medium text-bpl-primary hover:text-bpl-secondary transition-colors">
+                  View Full Stats &rarr;
                 </a>
               </div>
 
@@ -66,16 +67,21 @@ export default function Home() {
                 
                 {/* Batting Column */}
                 <div className="space-y-4">
-                  <h3 className="text-sm font-bold uppercase text-gray-400 tracking-widest mb-2">Most Runs</h3>
-                  {/* The Orange Cap Card */}
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+                    <h3 className="text-sm font-bold uppercase text-gray-500 tracking-widest">Most Runs</h3>
+                  </div>
+                  
+                  {/* Card for #1 */}
                   <StatsHighlight 
-                    title="Orange Cap Holder" 
+                    title="Orange Cap" 
                     player={topBatsman} 
                     metricLabel="Runs" 
                     metricValue={topBatsman.runs || 0}
                     subMetric={`Strike Rate: ${topBatsman.sr}`}
                   />
-                  {/* The Leaderboard List (2-5) */}
+                  
+                  {/* List for #2-#5 */}
                   <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
                     {battingLeaderboard.map((player, idx) => (
                       <LeaderboardRow 
@@ -90,16 +96,21 @@ export default function Home() {
 
                 {/* Bowling Column */}
                 <div className="space-y-4">
-                  <h3 className="text-sm font-bold uppercase text-gray-400 tracking-widest mb-2">Most Wickets</h3>
-                  {/* The Purple Cap Card */}
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="w-2 h-2 bg-purple-600 rounded-full"></span>
+                    <h3 className="text-sm font-bold uppercase text-gray-500 tracking-widest">Most Wickets</h3>
+                  </div>
+
+                  {/* Card for #1 */}
                   <StatsHighlight 
-                    title="Purple Cap Holder" 
+                    title="Purple Cap" 
                     player={topBowler} 
                     metricLabel="Wickets" 
                     metricValue={topBowler.wickets || 0}
                     subMetric={`Economy: ${topBowler.eco}`}
                   />
-                  {/* The Leaderboard List (2-5) */}
+
+                  {/* List for #2-#5 */}
                   <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
                     {bowlingLeaderboard.map((player, idx) => (
                       <LeaderboardRow 
@@ -115,29 +126,31 @@ export default function Home() {
               </div>
             </section>
 
-            {/* 3. NEWS SECTION: Modern Cards */}
+            {/* 3. NEWS SECTION */}
             <section>
-              <h2 className="text-2xl font-display font-bold text-bpl-dark border-l-4 border-bpl-primary pl-3 mb-6">
+              <h2 className="text-2xl font-display font-bold text-bpl-dark border-l-4 border-bpl-secondary pl-3 mb-6">
                 Latest Updates
               </h2>
               <div className="grid gap-4">
                 {newsUpdates.map((news) => (
-                  <article key={news.id} className="group bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow cursor-pointer">
+                  <article key={news.id} className="group bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all cursor-pointer">
                     <div className="flex flex-col md:flex-row md:items-center gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <span className="px-2 py-1 bg-green-50 text-bpl-primary text-xs font-bold uppercase rounded">
+                          <span className="px-2 py-1 bg-green-50 text-bpl-primary text-[10px] font-bold uppercase rounded tracking-wider">
                             {news.category}
                           </span>
-                          <span className="text-gray-400 text-xs">{news.date}</span>
+                          <span className="text-gray-400 text-xs font-medium">{news.date}</span>
                         </div>
-                        <h3 className="text-lg font-bold text-gray-900 group-hover:text-bpl-secondary transition-colors line-clamp-2">
+                        <h3 className="text-lg font-bold text-gray-900 group-hover:text-bpl-secondary transition-colors leading-snug">
                           {news.title}
                         </h3>
                       </div>
-                      <div className="md:text-right">
+                      <div className="md:text-right hidden md:block">
                         <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-50 text-gray-400 group-hover:bg-bpl-primary group-hover:text-white transition-colors">
-                          &rarr;
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                          </svg>
                         </span>
                       </div>
                     </div>
@@ -147,15 +160,15 @@ export default function Home() {
             </section>
           </div>
 
-          {/* RIGHT COLUMN: Sidebar (Span 4 cols) */}
+          {/* RIGHT COLUMN (Span 4) */}
           <aside className="lg:col-span-4 space-y-8">
             <PointsTable data={pointsTableData} />
             
-            {/* Social / Ad Widget */}
-            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-8 text-center text-white">
+            {/* Promo / Social Widget */}
+            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-8 text-center text-white shadow-lg">
               <h3 className="font-display font-bold text-2xl mb-2 text-bpl-accent">Follow BPL</h3>
-              <p className="text-gray-400 text-sm mb-6">Get exclusive content on our social channels.</p>
-              <button className="bg-white text-bpl-dark font-bold py-2 px-6 rounded-full hover:bg-bpl-accent transition-colors w-full">
+              <p className="text-gray-400 text-sm mb-6">Get exclusive content, highlights, and behind-the-scenes action.</p>
+              <button className="bg-white text-bpl-dark font-bold py-3 px-8 rounded-full hover:bg-bpl-accent transition-colors w-full text-sm uppercase tracking-wider">
                 Join Community
               </button>
             </div>

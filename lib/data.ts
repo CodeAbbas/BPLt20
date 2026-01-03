@@ -1,6 +1,6 @@
 import { Match, TableRow, Player, NewsItem } from './types';
 
-// Updated: 02 Jan 2026
+// Updated: Jan 02, 2026
 
 export const activeMatch: Match = {
   id: 112,
@@ -22,7 +22,6 @@ export const pointsTableData: TableRow[] = [
   { rank: 6, team: "Noakhali Express", played: 3, won: 0, lost: 3, nrr: "-1.393", pts: 0 },
 ];
 
-// Added more dummy players to demonstrate the Top 5 list
 export const topPerformers: { batsmen: Player[]; bowlers: Player[] } = {
   batsmen: [
     { name: "Parvez Hossain Emon", team: "Sylhet Titans", runs: 169, innings: 3, sr: 159.43, image: "/players/emon.jpg" },
