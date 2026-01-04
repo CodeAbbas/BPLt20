@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
-import { Inter, Oswald } from "next/font/google"; // Changed fonts
+import { Inter, Oswald } from "next/font/google"; // 1. Import correct fonts
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 
-const inter = Inter({ 
-  subsets: ["latin"], 
-  variable: '--font-inter' 
+// 2. Configure Inter (Body text)
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
-const oswald = Oswald({ 
-  subsets: ["latin"], 
-  variable: '--font-oswald' 
+// 3. Configure Oswald (Headings/Scores)
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-oswald",
 });
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s | BPL T20',
-    default: 'BPL T20 2026 - Live Scores & Stats',
-  },
-  description: 'Official Bangladesh Premier League Updates',
+  title: "BPL T20 | Official Stats & Scores",
+  description: "Live scores, points table, and stats for BPL Season 12",
 };
 
 export default function RootLayout({
@@ -28,11 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${oswald.variable} font-sans bg-slate-50 text-slate-900`}>
+      <body
+        className={`${inter.variable} ${oswald.variable} font-sans bg-gradient-to-br from-gray-900 to-gray-800 text-slate-900`}
+      >
         <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <main className="min-h-screen">{children}</main>
       </body>
     </html>
   );

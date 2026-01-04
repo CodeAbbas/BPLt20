@@ -6,6 +6,8 @@ export const activeMatch: Match = {
   id: 112,
   team1: "Sylhet Titans",
   team2: "Rangpur Riders",
+  team1Logo: "/teams/sylhet.png",
+  team2Logo: "/teams/rangpur.png",
   team1Score: "145/6 (18.4)",
   team2Score: "142/8 (20.0)",
   status: "Live",

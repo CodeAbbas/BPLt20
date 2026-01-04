@@ -2,6 +2,8 @@ export interface Match {
   id: number;
   team1: string;
   team2: string;
+  team1Logo?: string; 
+  team2Logo?: string;
   team1Score: string;
   team2Score: string;
   status: "Live" | "Completed" | "Scheduled";

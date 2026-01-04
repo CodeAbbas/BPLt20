@@ -13,16 +13,16 @@ export default function StatsPage() {
       {/* Tab system could go here */}
       
       <div className="grid md:grid-cols-2 gap-8">
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-gradient-to-br from-bpl-primary to-green-800 p-6 rounded-lg shadow">
           <h2 className="text-xl font-bold mb-4 text-bpl-primary">Most Runs</h2>
           <ul className="space-y-3">
             {topPerformers.batsmen.map((player, idx) => (
-              <li key={idx} className="flex justify-between items-center p-3 bg-gray-50 rounded">
+              <li key={idx} className="flex justify-between items-center p-3 bg-gradient-to-br to-bpl-primary from-green-800 rounded">
                 <div className="flex items-center gap-3">
-                  <span className="font-display font-bold text-gray-400">#{idx + 1}</span>
+                  <span className="font-display font-bold text-gray-200">#{idx + 1}</span>
                   <div>
                     <p className="font-bold">{player.name}</p>
-                    <p className="text-xs text-gray-500">{player.team}</p>
+                    <p className="text-xs text-gray-400">{player.team}</p>
                   </div>
                 </div>
                 <div className="text-right">
@@ -34,7 +34,26 @@ export default function StatsPage() {
           </ul>
         </div>
         
-        {/* Repeat similar block for Bowlers/Wickets */}
+        <div className="bg-gradient-to-br from-bpl-primary to-green-800 p-6 rounded-lg shadow">
+          <h2 className="text-xl font-bold mb-4 text-bpl-primary">Most Runs</h2>
+          <ul className="space-y-3">
+            {topPerformers.bowlers.map((player, idx) => (
+              <li key={idx} className="flex justify-between items-center p-3 bg-gradient-to-br to-bpl-primary from-green-800 rounded">
+                <div className="flex items-center gap-3">
+                  <span className="font-display font-bold text-gray-200">#{idx + 1}</span>
+                  <div>
+                    <p className="font-bold">{player.name}</p>
+                    <p className="text-xs text-gray-400">{player.team}</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="font-bold text-bpl-dark">{player.wickets}</p>
+                  <p className="text-xs text-gray-500">Wickets</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
