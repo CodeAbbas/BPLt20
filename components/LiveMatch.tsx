@@ -60,13 +60,13 @@ export default function LiveMatch({ match }: { match: Match }) {
               </div>
             )}
           </div>
-          <h3 className="font-bold text-sm text-gray-600 uppercase tracking-tight">{match.team1}</h3>
+          {/*<h3 className="font-bold text-sm text-gray-600 uppercase tracking-tight">{match.team1}</h3>*/}
           <ScoreDisplay score={match.team1Score} />
         </div>
         
         {/* VS Badge */}
         <div className="text-center w-1/3">
-          <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-400 font-display font-bold text-xl shadow-inner">
+          <div className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-green-500 opacity-30 text-gray-900 font-display font-bold text-lg shadow-inner">
             VS
           </div>
         </div>
@@ -87,7 +87,6 @@ export default function LiveMatch({ match }: { match: Match }) {
               </div>
             )}
           </div>
-          <h3 className="font-bold text-sm text-gray-600 uppercase tracking-tight">{match.team2}</h3>
           <ScoreDisplay score={match.team2Score} />
         </div>
       </div>
